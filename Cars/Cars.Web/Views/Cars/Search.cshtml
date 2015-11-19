@@ -1,0 +1,36 @@
+﻿
+@model Cars.Web.Models.CarSearchModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class ="items-container">
+    <h3><span>Мечтани автомобили</span> </h3>
+
+
+    <div style="margin: 30px;">
+        @{
+            var grid = new WebGrid(
+                canPage: true,
+                rowsPerPage: Model.PageSize,
+                canSort: true,
+                ajaxUpdateContainerId: "grid");
+
+            grid.Bind(Model.Cars, rowCount: Model.TotalRecords, autoSortAndPage: false);
+            grid.Pager(WebGridPagerModes.All);
+
+            @grid.GetHtml(htmlAttributes: new { id = "grid" },
+                fillEmptyRows: false,
+                tableStyle: "table table-bordered table-hover",
+                mode: WebGridPagerModes.All,
+                columns: grid.Columns(
+                    grid.Column("Brand", "Марка", style: "col-md-3"),
+                    grid.Column("Year", "Година", style: "col-md-3"),
+                    grid.Column("Description", "Описание", style: "col-md-3"),
+                    // grid.Column("Price", header: "Price", format: @<text>@String.Format("{0:C}", item.Price) </text>),
+                    grid.Column("Shipper.Name", "Вносител", style: "col-md-3")
+                    ))
+        }
+    </div>
+</div>
+

@@ -10,10 +10,11 @@ namespace Cars.Models
     {
         public Shipper()
         {
-            this.Cars=new HashSet<Car>();
+            this.Cars = new HashSet<Car>();
         }
         [Key]
         public int Id { get; set; }
+        public string  Name { get; set; }
         public virtual ICollection<Car> Cars { get; set; }
     }
 }

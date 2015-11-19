@@ -1,0 +1,38 @@
+﻿@using System.Activities.Expressions
+@model Cars.Web.Models.CarViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row items-container">
+    <h3><span> Намери своя мечтан автомобил</span></h3>
+
+    <div class="col col-md-6"></div>
+    <div class="col col-md-6">
+@using (Html.BeginForm("Search", "Cars", FormMethod.Get))
+{
+    <div class="row">
+        <div class="form-horizontal">
+            <div class="row">
+                @Html.Label("Shipper","Вносител")
+                @Html.DropDownListFor(m => m.Shippers, new SelectList(ViewBag.Shippers, "Id", "Name"),
+                    "Всички вносители", new { @class = "form-control", @placeholder = "Category" })
+            </div><br />
+
+            <div class="row">
+                @Html.Label("Description","Описание")
+                @Html.TextBoxFor(m => m.Description, new {@class = "form-control", @placeholder = "описание"})
+            </div>
+            <br />
+            <div class="row col-md-7 text-right">
+                <button type="submit" class="btn btn-success">
+                    <span class="glyphicon glyphicon-search">Търси</span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+}
+        </div>
+ </div>
+
