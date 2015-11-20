@@ -20,38 +20,29 @@ namespace Cars.Web.Controllers
 
         public ActionResult Index()
         {
-            var model = this._cars.All().Select(x => new CarViewModel()
-            {
-                Description = x.Description,
-                ShipperId = x.ShipperId,
-            }).ToList();
-
+            var model = new IndexViewModel();
             ViewBag.Shippers = this.Data.Shippers.All();
-
-
-            return View();
+           
+            return View(model);
         }
-        public ActionResult Search(CarSearchModel model)
+
+        public ActionResult SearchResult(CarSearchModel model)
         {
-            // To Bind the category drop down in search section
             ViewBag.Shippers = this.Data.Shippers.All();
 
             // Get Cars
             model.Cars = _cars.All()
-                .Where(
-                    x =>
-                        (model.Description == null || x.Description.Contains(model.Description))
-                        
-                        && (model.Shippers == null || x.ShipperId == model.Shippers)
-                ).ToList();
+                .Where(x =>
+                        (model.Description == null || x.Description.Contains(model.Description))                        
+                        && (model.Shippers == null || x.ShipperId == model.Shippers))
+                .OrderBy(x=>x.Year)
+                .ToList();
 
             // total records for paging
             model.TotalRecords = _cars.All()
                 .Count(x =>
                     (model.Description == null || x.Description.Contains(model.Description))
-                    && (model.Shippers == null || x.ShipperId == model.Shippers)
-                );
-
+                    && (model.Shippers == null || x.ShipperId == model.Shippers));
 
             return View(model);
         }

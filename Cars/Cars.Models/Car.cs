@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
@@ -11,11 +12,24 @@ namespace Cars.Models
     {
         [Key]
         public int Id { get; set; }
+
+        [Required]
+        [DisplayName("Марка")]
+        [StringLength(50, MinimumLength = 3)]
         public string Brand { get; set; }
 
-        [Range(1900, 2016,ErrorMessage="Date must be valid integer between 1900 and 2016")]
+        [DisplayName("Гоадина")]
+        [Range(1900, 2015,ErrorMessage="Date must be valid integer")]
         public int Year { get; set; }
+
+        [DisplayName("Мощност")]
+        public int Power { get; set; }
+
+        [Required]
+        [DisplayName("Описание")]
         public string Description { get; set; }
+
+        [DisplayName("Вносител")]
         public int ShipperId { get; set; }
         public virtual Shipper Shipper { get; set; }
     }

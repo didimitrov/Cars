@@ -6,12 +6,11 @@ using Cars.Models;
 
 namespace Cars.Web.Models
 {
-    public class CarViewModel
+    public class IndexViewModel
     {
-        public int Id { get; set; }
-        public string Description { get; set; }       
-        public int ShipperId { get; set; }
-
+        [StringLength(20, MinimumLength = 3, ErrorMessage = "Must be between 3 and 20 characters!")]
+        public string Description { get; set; }  
+     
         [Display(Name = "Shippers")]
         public ICollection<Shipper> Shippers { get; set; }
     }
