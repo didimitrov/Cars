@@ -84,3 +84,10 @@ div h3 span{
     font-size: 1.5em;
     background-color: white;
 }
+.highlight {
+    background-color: yellowgreen;
+}
+img {
+     height: auto;
+    width: 100%;
+}

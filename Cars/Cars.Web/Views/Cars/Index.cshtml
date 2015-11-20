@@ -7,8 +7,8 @@
 <div class="row items-container">
     <h3><span> Намери твоя мечтан автомобил</span></h3>
 
-    <div class="col col-md-6">
-               
+    <div class="col col-md-6" style="padding-top: 50px">
+        <img src="/Content/Images/auto-comic.jpg" class="" />
     </div>
 
     <div class="col col-md-6" style="padding-top: 100px">
@@ -24,7 +24,8 @@
 
                     <div class="row">
                         @Html.Label("Description","Описание")
-                        @Html.TextBoxFor(m => m.Description, new {@class = "form-control", @placeholder = "Описание"})
+                        @Html.TextBoxFor(m => m.Description, new {@class = "form-control search", @placeholder = "Описание"})
+                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })                     
                     </div>
                     <br />
                     <div class="row col-md-7 text-right">

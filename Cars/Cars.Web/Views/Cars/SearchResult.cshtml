@@ -25,10 +25,28 @@
                     grid.Column("Brand", "Марка", style: "col-md-2"),
                     grid.Column("Year", "Година", style: "col-md-2"),
                     grid.Column("Power", header: "Мощност",style: "text-right", format: @<text>@String.Format(item.Power+" PS") </text>),
-                                     grid.Column("Shipper.Name", "Вносител", style: "col-md-3 text-center"),                   
-                    grid.Column("Description", "Описание", style: "col-md-3")
+                    grid.Column("Shipper.Name", "Вносител", style: "col-md-3 text-center"),                   
+                    grid.Column("Description", "Описание", style: "col-md-3 desc")
                     ))
         }
     </div>
+    @Html.Hidden("hiddensearchString", (string)ViewBag.searchString)
 </div>
 
+@section scripts{
+    <script>
+        $(document).ready(function() {
+            var textToHighligt = '@ViewData["searchString"]';
+            var searchString = $("#searchString").val();
+            $.fn.highlight = function (str, className) {
+                var regex = new RegExp(str, "gi");
+                return this.each(function () {
+                    this.innerHTML = this.innerHTML.replace(regex, function (matched) {
+                        return "<span class=\"" + className + "\">" + matched + "</span>";
+                    });
+                });
+            };
+            $(".desc").highlight(textToHighligt, "highlight");
+        })
+    </script>
+}

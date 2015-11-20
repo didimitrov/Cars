@@ -9,6 +9,8 @@ namespace Cars.Web.Models
 {
     public class CarSearchModel
     {
+        [Required]
+        [StringLength(20, MinimumLength = 3, ErrorMessage = "Must be between 3 and 20 characters!")]      
         [Display(Name = "Описание")]
         public string Description { get; set; }
 

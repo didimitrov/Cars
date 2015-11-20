@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
@@ -18,6 +19,7 @@ namespace Cars.Web.Controllers
             _cars = cars;
         }
 
+        
         public ActionResult Index()
         {
             var model = new IndexViewModel();
@@ -26,25 +28,28 @@ namespace Cars.Web.Controllers
             return View(model);
         }
 
+        [HttpGet]
         public ActionResult SearchResult(CarSearchModel model)
         {
             ViewBag.Shippers = this.Data.Shippers.All();
+           // ViewData["searchString"] = model.Description;
+           ViewBag.searchString = model.Description;
 
             // Get Cars
-            model.Cars = _cars.All()
-                .Where(x =>
-                        (model.Description == null || x.Description.Contains(model.Description))                        
-                        && (model.Shippers == null || x.ShipperId == model.Shippers))
-                .OrderBy(x=>x.Year)
-                .ToList();
+                model.Cars = _cars.All()
+                    .Where(x =>
+                            (model.Description == null || x.Description.Contains(model.Description))
+                            && (model.Shippers == null || x.ShipperId == model.Shippers))
+                    .OrderBy(x => x.Year)
+                    .ToList();
 
-            // total records for paging
-            model.TotalRecords = _cars.All()
-                .Count(x =>
-                    (model.Description == null || x.Description.Contains(model.Description))
-                    && (model.Shippers == null || x.ShipperId == model.Shippers));
+                // total records for paging
+                model.TotalRecords = _cars.All()
+                    .Count(x =>
+                        (model.Description == null || x.Description.Contains(model.Description))
+                        && (model.Shippers == null || x.ShipperId == model.Shippers));
 
-            return View(model);
+                return View(model);
         }
     }
 }
