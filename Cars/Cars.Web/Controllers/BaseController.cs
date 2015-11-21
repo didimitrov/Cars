@@ -23,14 +23,14 @@ namespace Cars.Web.Controllers
         {
         }
 
-        protected ApplicationUser UserProfile { get; private set; }
+        //protected ApplicationUser UserProfile { get; private set; }
 
-        protected override IAsyncResult BeginExecute(RequestContext requestContext, AsyncCallback callback, object state)
-        {
-            this.UserProfile = this.Data.Users.All()
-                .FirstOrDefault(u => u.UserName == requestContext.HttpContext.User.Identity.Name);
+        //protected override IAsyncResult BeginExecute(RequestContext requestContext, AsyncCallback callback, object state)
+        //{
+        //    this.UserProfile = this.Data.Users.All()
+        //        .FirstOrDefault(u => u.UserName == requestContext.HttpContext.User.Identity.Name);
 
-            return base.BeginExecute(requestContext, callback, state);
-        }
-	}
+        //    return base.BeginExecute(requestContext, callback, state);
+        //}
+    }
 }

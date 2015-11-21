@@ -13,7 +13,7 @@
 
     <div class="col col-md-6" style="padding-top: 100px">
         @using (Html.BeginForm("SearchResult", "Cars", FormMethod.Get))
-        {
+        { 
             <div class="row col-md-offset-1">
                 <div class="form-horizontal">
                     <div class="row">
@@ -24,7 +24,7 @@
 
                     <div class="row">
                         @Html.Label("Description","Описание")
-                        @Html.TextBoxFor(m => m.Description, new {@class = "form-control search", @placeholder = "Описание"})
+                        @Html.TextBoxFor(m => m.Description, new {@class = "form-control", @placeholder = "Описание"})
                         @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })                     
                     </div>
                     <br />

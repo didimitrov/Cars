@@ -14,23 +14,22 @@ namespace Cars.Models
         public int Id { get; set; }
 
         [Required]
-        [DisplayName("Марка")]
         [StringLength(50, MinimumLength = 3)]
         public string Brand { get; set; }
-
-        [DisplayName("Гоадина")]
-        [Range(1900, 2015,ErrorMessage="Date must be valid integer")]
+       
+        [Required]
+        [DisplayName("Година")]
         public int Year { get; set; }
 
-        [DisplayName("Мощност")]
+        [Required]
         public int Power { get; set; }
 
         [Required]
-        [DisplayName("Описание")]
         public string Description { get; set; }
 
-        [DisplayName("Вносител")]
+        [Required]
         public int ShipperId { get; set; }
+
         public virtual Shipper Shipper { get; set; }
     }
 }

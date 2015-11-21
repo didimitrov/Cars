@@ -1,0 +1,87 @@
+﻿@model Cars.Web.Models.CarInputModel
+
+@{
+    ViewBag.Title = "Create";
+}
+<div class=" items-container">
+    <h3><span>Добавяне на нов автомобил</span></h3>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal col-md-offset-1" style="padding-top: 30px">
+           
+            @Html.ValidationSummary(true)
+
+            <div class="form-group form-inline">
+                
+                <div class="form-group col-md-6">
+                    @Html.LabelFor(model => model.Brand, new { @class = "control-label col-md-3" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Brand, new { htmlAttributes = new { @class = "form-control" }})
+                        @Html.ValidationMessageFor(model => model.Brand)
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    @Html.LabelFor(model => model.Power, new { @class = "control-label col-md-3" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Power, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Power)
+                    </div>
+                </div>               
+            </div>
+            
+            <div class="form-group form-inline">
+                <div class="form-group col-md-6">
+                    @Html.LabelFor(model => model.Year, new { @class = "control-label col-md-3" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Year, new { htmlAttributes = new { @class = "form-control" } })
+                       @Html.ValidationMessageFor(model => model.Year)
+                    </div>
+                </div>
+
+                <div class="form-group col-md-6">                   
+                        @Html.LabelFor(model => model.ShipperName, new { @class = "control-label col-md-3" })                
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ShipperName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ShipperName)
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-group form-inline">
+                <div class="form-group col col-md-6">
+                    @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-3 " })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.Description, new { @class="descArea" })
+                        @Html.ValidationMessageFor(model => model.Description)
+                    </div>
+                </div>
+            </div>
+
+            @*<div class="form-group">
+                    <div class="col-md-10">
+                        @Html.LabelFor(model => model.ShipperId, new { @class = "control-label col-md-2" })
+
+                        @Html.DropDownListFor(model => model.ShipperId, new SelectList(ViewBag.Shippers, "Id", "Name"),
+                        new { @class = "form-control" })
+
+                        @Html.DropDownList("ShipperId", @ViewBag.Shippers as SelectList, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ShipperId, string.Empty, new { @class = "text-danger" })
+                    </div>
+                </div>*@
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-6 text-right">
+                    <input type="submit" value="Добавяне в базата" class="btn btn-success" />
+                </div>
+            </div>
+        </div>
+    }
+
+</div><br />
+
+<div>
+    @Html.ActionLink("Назад към търсене", "Index")
+</div>
+

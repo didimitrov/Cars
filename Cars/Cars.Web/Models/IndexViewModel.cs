@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using Cars.Models;
+using Cars.Web.Infrastructure.Peek.Web.Infrastructure.Mapping;
 
 namespace Cars.Web.Models
 {
-    public class IndexViewModel
+    public class IndexViewModel : IMapFrom<Car>
     {
         [Required]
-        [StringLength(20, MinimumLength = 3, ErrorMessage = "Must be between 3 and 20 characters!")]
         [Display(Name = "Описание")]
+        [StringLength(20, MinimumLength = 3, ErrorMessage = "Моля въведете валидна марка между {2} и {1} символа!")]
         public string Description { get; set; }  
      
         [Display(Name = "Вносители")]
