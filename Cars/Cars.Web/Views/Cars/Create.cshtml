@@ -8,9 +8,7 @@
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
-
-        <div class="form-horizontal col-md-offset-1" style="padding-top: 30px">
-           
+        <div class="form-horizontal col-md-offset-1" style="padding-top: 30px">           
             @Html.ValidationSummary(true)
 
             <div class="form-group form-inline">
@@ -79,8 +77,7 @@
         </div>
     }
 
-</div><br />
-
+</div>
 <div>
     @Html.ActionLink("Назад към търсене", "Index")
 </div>
